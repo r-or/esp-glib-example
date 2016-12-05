@@ -1,0 +1,9 @@
+.output
+*.autosave
+*.creator
+*.config
+bin/
+*.user
+*.files
+*.includes
+user_wifi_credentials.h

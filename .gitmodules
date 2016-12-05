@@ -1,0 +1,3 @@
+[submodule "glib-example/glib"]
+	path = glib-example/glib
+	url = git@github.com:r-or/esp-glib.git
