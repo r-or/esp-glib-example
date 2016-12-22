@@ -2,8 +2,7 @@
 *.autosave
 *.creator
 *.config
-bin/
-*.user
+*.user*
 *.files
 *.includes
 user_wifi_credentials.h

@@ -3,7 +3,7 @@
 
 #include "stdint.h"
 
-struct asset_info {
+struct ass_info {
     uint32_t address;	// offset to asset storage on flash
     uint32_t length;	// size in bytes
     uint16_t width;
@@ -11,11 +11,11 @@ struct asset_info {
 };
 
 typedef enum {
-    ASSET_NONE,
-    ASSET_CURSOR,
-    ASSET_INT_PI,
-} asset_bmp_name;
+    ASS_NONE,
+    ASS_CURSOR,
+    ASS_INT_PI,
+} ass_bmp_name;
 
-uint8_t asset_get(struct asset_info *const return_ainfo, const asset_bmp_name asset);
+uint8_t ass_get(struct ass_info *const return_ainfo, const ass_bmp_name asset);
 
 #endif

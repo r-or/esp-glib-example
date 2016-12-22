@@ -7,9 +7,13 @@ STERM="minicom"
 FFREQ="40m"
 FMODE="qio"
 FSIZE="32m"
-PORT="/dev/ttyUSB1"
+PORT="/dev/ttyUSB0"
 BAUD="1500000"
 MAKEARGS="all COMPILE=gcc"
+
+if [ ! -d "$BIN_PATH" ]; then
+  mkdir $BIN_PATH
+fi
 
 if [ -z "$1" ]; then
     make $MAKEARGS

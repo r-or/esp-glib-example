@@ -112,27 +112,30 @@ a_few_screens() {
     glib_set_mode(GLIB_DM_FREE);
     switch (screen_count) {
     case 0:
-        glib_print((uint8_t *)"Courtesy of...\n"
-                              "\"just this guy\"\n"
-                              "{@xkcd.com}", 0, _FONT_MAX_CHAR_ASCENT_,
-                   (glib_draw_args)(GLIB_DA_SWENDIAN | GLIB_DA_CENTER_X | GLIB_DA_CENTER_Y), NULL, NULL);
+        glib_set_font(FNT_HANKEN_LIGHT_19);
+        glib_print((uint8_t *)"u+00a9 u+201cjust this guyu+201d\n"
+                              "{@xkcd.com}", 0, 0,
+                   (glib_txt_position)(GLIB_TP_CENTER_X | GLIB_TP_CENTER_Y | GLIB_TP_TOPMOST),
+                   (glib_draw_args)(GLIB_DA_SWENDIAN), NULL, NULL);
         glib_fb2gram();
         glib_clear_fb_toss_anim(GLIB_AD_W, anim_hold_frames, anim_acceleration, &a_few_screens);
         glib_clear_tb_txt_state();
         break;
     case 1:
+        glib_set_font(FNT_HANKEN_LIGHT_13);
         glib_print((uint8_t *)"/* TODO: webclient\n"
                               "to display different one \n"
-                              "each hour ... */", 0, _FONT_MAX_CHAR_ASCENT_,
-                   (glib_draw_args)(GLIB_DA_SWENDIAN | GLIB_DA_CENTER_X | GLIB_DA_CENTER_Y), NULL, NULL);
+                              "each hour ... */", 0, 0,
+                   (glib_txt_position)(GLIB_TP_CENTER_X | GLIB_TP_CENTER_Y | GLIB_TP_TOPMOST),
+                   (glib_draw_args)(GLIB_DA_SWENDIAN), NULL, NULL);
            glib_fb2gram();
            glib_clear_fb_toss_anim(GLIB_AD_N, anim_hold_frames, anim_acceleration, &a_few_screens);
            glib_clear_tb_txt_state();
         break;
     case 2:
         ;
-        struct asset_info cass;
-        if (!asset_get(&cass, ASSET_INT_PI))
+        struct ass_info cass;
+        if (!ass_get(&cass, ASS_INT_PI))
             glib_draw_bitmap(0, 11, cass.address, cass.height, cass.width,
                              (glib_draw_args)(GLIB_DA_SWENDIAN | GLIB_DA_INVERT));
         glib_fb2gram();
@@ -147,9 +150,13 @@ a_few_screens() {
 
 static void ICACHE_FLASH_ATTR
 start_user(os_event_t *e) {
-    glib_set_mode(GLIB_DM_FREE);
-    glib_print((uint8_t *)"HELLO", 0, _FONT_MAX_CHAR_ASCENT_,
-               (glib_draw_args)(GLIB_DA_SWENDIAN | GLIB_DA_CENTER_X | GLIB_DA_CENTER_Y), NULL, NULL);
+    glib_set_mode(GLIB_DM_TEXT_CLR);
+    glib_set_font(FNT_HANKEN_LIGHT_19);
+    glib_print((uint8_t *)"u+201cHello Worldu+201d,\n", 0, 0,
+               (glib_txt_position)(GLIB_TP_TOPMOST),
+               (glib_draw_args)(GLIB_DA_SWENDIAN), NULL, NULL);
+    glib_set_font(FNT_HANKEN_LIGHT_13);
+    glib_print((uint8_t *)"said ESP quietly.", 0, 0, GLIB_TP_APPEND, GLIB_DA_SWENDIAN, NULL, NULL);
     glib_fb2gram();
     glib_clear_fb_toss_anim(GLIB_AD_S, anim_hold_frames, anim_acceleration, &a_few_screens);
     glib_clear_tb_txt_state();
@@ -197,6 +204,7 @@ user_init(void) {
 
     glib_init();
     glib_set_brightness(GLIB_MAX_BRIGHTNESS);
+    glib_set_font(FNT_HANKEN_LIGHT_13);
 
     //Disarm timer
     os_timer_disarm(&some_timer);

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font type="GHL">
+ <description family="Hanken" size="13" style="Book"/>
+ <metrics height="19" ascender="13" descender="-4"/>
+ <texture file="hanken_book_13.png" width="209" height="207"/>
+ <chars>
+  <char offset="0 0" advance="6" rect="1 18 0 0" id=" "/>
+  <char offset="1 14" advance="5" rect="2 4 2 14" id="!"/>
+  <char offset="1 14" advance="5" rect="5 4 4 4" id="&quot;"/>
+  <char offset="0 15" advance="14" rect="10 3 14 15" id="#"/>
+  <char offset="1 17" advance="10" rect="25 1 8 19" id="$"/>
+  <char offset="0 14" advance="10" rect="34 4 10 14" id="%"/>
+  <char offset="1 14" advance="13" rect="45 4 12 14" id="&amp;"/>
+  <char offset="1 14" advance="3" rect="58 4 2 4" id="'"/>
+  <char offset="1 15" advance="5" rect="61 3 4 19" id="("/>
+  <char offset="0 15" advance="5" rect="66 3 5 19" id=")"/>
+  <char offset="0 14" advance="5" rect="72 4 6 6" id="*"/>
+  <char offset="0 9" advance="9" rect="79 9 10 9" id="+"/>
+  <char offset="0 2" advance="3" rect="90 16 3 4" id=","/>
+  <char offset="1 5" advance="9" rect="94 13 7 1" id="-"/>
+  <char offset="1 1" advance="3" rect="102 17 2 1" id="."/>
+  <char offset="-1 15" advance="8" rect="105 3 9 19" id="/"/>
+  <char offset="1 14" advance="10" rect="115 4 8 14" id="0"/>
+  <char offset="0 14" advance="8" rect="124 4 7 14" id="1"/>
+  <char offset="1 14" advance="10" rect="132 4 8 14" id="2"/>
+  <char offset="1 14" advance="10" rect="141 4 8 14" id="3"/>
+  <char offset="0 14" advance="10" rect="150 4 9 14" id="4"/>
+  <char offset="1 14" advance="9" rect="160 4 8 14" id="5"/>
+  <char offset="1 14" advance="9" rect="169 4 8 14" id="6"/>
+  <char offset="0 14" advance="9" rect="178 4 8 14" id="7"/>
+  <char offset="1 14" advance="10" rect="187 4 8 14" id="8"/>
+  <char offset="1 14" advance="10" rect="196 4 8 14" id="9"/>
+  <char offset="1 9" advance="3" rect="205 9 2 9" id=":"/>
+  <char offset="0 9" advance="3" rect="1 28 3 11" id=";"/>
+  <char offset="1 10" advance="9" rect="5 27 8 10" id="&lt;"/>
+  <char offset="1 7" advance="12" rect="14 30 10 5" id="="/>
+  <char offset="0 10" advance="9" rect="25 27 8 10" id=">"/>
+  <char offset="1 14" advance="11" rect="34 23 9 14" id="?"/>
+  <char offset="1 9" advance="10" rect="44 28 9 9" id="@"/>
+  <char offset="0 14" advance="12" rect="54 23 13 14" id="A">
+   <kerning advance="-1" id="T"/>
+   <kerning advance="-1" id="V"/>
+   <kerning advance="-1" id="Y"/>
+  </char>
+  <char offset="1 14" advance="11" rect="68 23 9 14" id="B"/>
+  <char offset="1 14" advance="14" rect="78 23 12 14" id="C"/>
+  <char offset="0 14" advance="13" rect="91 23 12 14" id="D"/>
+  <char offset="1 14" advance="9" rect="104 23 8 14" id="E"/>
+  <char offset="1 14" advance="8" rect="113 23 8 14" id="F">
+   <kerning advance="-1" id="A"/>
+   <kerning advance="-1" id="À"/>
+   <kerning advance="-1" id="Á"/>
+   <kerning advance="-1" id="Â"/>
+   <kerning advance="-1" id="Ã"/>
+   <kerning advance="-1" id="Ä"/>
+   <kerning advance="-1" id="Å"/>
+   <kerning advance="-1" id="Æ"/>
+  </char>
+  <char offset="1 14" advance="14" rect="122 23 12 14" id="G"/>
+  <char offset="1 14" advance="12" rect="135 23 10 14" id="H"/>
+  <char offset="1 14" advance="4" rect="146 23 2 14" id="I"/>
+  <char offset="1 14" advance="7" rect="149 23 5 14" id="J"/>
+  <char offset="1 14" advance="10" rect="155 23 9 14" id="K"/>
+  <char offset="1 14" advance="7" rect="165 23 7 14" id="L"/>
+  <char offset="1 14" advance="16" rect="173 23 14 14" id="M"/>
+  <char offset="1 14" advance="11" rect="188 23 9 14" id="N"/>
+  <char offset="1 14" advance="16" rect="1 41 14 14" id="O">
+   <kerning advance="-1" id="Y"/>
+   <kerning advance="-1" id="Z"/>
+  </char>
+  <char offset="1 14" advance="9" rect="16 41 8 14" id="P">
+   <kerning advance="-1" id="A"/>
+   <kerning advance="-1" id="a"/>
+   <kerning advance="-1" id="c"/>
+   <kerning advance="-1" id="d"/>
+   <kerning advance="-1" id="e"/>
+   <kerning advance="-1" id="g"/>
+   <kerning advance="-1" id="i"/>
+   <kerning advance="-1" id="j"/>
+   <kerning advance="-1" id="o"/>
+   <kerning advance="-1" id="q"/>
+   <kerning advance="-1" id="s"/>
+   <kerning advance="-1" id="À"/>
+   <kerning advance="-1" id="Á"/>
+   <kerning advance="-1" id="Â"/>
+   <kerning advance="-1" id="Ã"/>
+   <kerning advance="-1" id="Ä"/>
+   <kerning advance="-1" id="Å"/>
+  </char>
+  <char offset="1 14" advance="16" rect="25 41 14 14" id="Q"/>
+  <char offset="1 14" advance="9" rect="40 41 8 14" id="R"/>
+  <char offset="1 14" advance="10" rect="49 41 8 14" id="S"/>
+  <char offset="1 14" advance="11" rect="58 41 9 14" id="T">
+   <kerning advance="-1" id="a"/>
+   <kerning advance="-1" id="c"/>
+   <kerning advance="-1" id="e"/>
+   <kerning advance="-1" id="g"/>
+   <kerning advance="-1" id="j"/>
+   <kerning advance="-1" id="o"/>
+   <kerning advance="-1" id="q"/>
+   <kerning advance="-1" id="r"/>
+   <kerning advance="-1" id="s"/>
+   <kerning advance="-1" id="u"/>
+   <kerning advance="-1" id="w"/>
+   <kerning advance="-1" id="Æ"/>
+  </char>
+  <char offset="1 14" advance="13" rect="68 41 11 14" id="U"/>
+  <char offset="0 14" advance="11" rect="80 41 12 14" id="V">
+   <kerning advance="-1" id="A"/>
+   <kerning advance="-1" id="À"/>
+   <kerning advance="-1" id="Á"/>
+   <kerning advance="-1" id="Â"/>
+   <kerning advance="-1" id="Ã"/>
+   <kerning advance="-1" id="Ä"/>
+   <kerning advance="-1" id="Å"/>
+   <kerning advance="-1" id="Æ"/>
+  </char>
+  <char offset="0 14" advance="18" rect="93 41 20 14" id="W">
+   <kerning advance="-1" id="Q"/>
+   <kerning advance="-1" id="a"/>
+   <kerning advance="-1" id="e"/>
+   <kerning advance="-1" id="g"/>
+   <kerning advance="-1" id="o"/>
+   <kerning advance="-1" id="q"/>
+   <kerning advance="-1" id="Æ"/>
+  </char>
+  <char offset="0 14" advance="12" rect="114 41 12 14" id="X"/>
+  <char offset="0 14" advance="10" rect="127 41 10 14" id="Y">
+   <kerning advance="-1" id="A"/>
+   <kerning advance="-1" id="O"/>
+   <kerning advance="-1" id="À"/>
+   <kerning advance="-1" id="Á"/>
+   <kerning advance="-1" id="Â"/>
+   <kerning advance="-1" id="Ã"/>
+   <kerning advance="-1" id="Ä"/>
+   <kerning advance="-1" id="Å"/>
+   <kerning advance="-1" id="Æ"/>
+   <kerning advance="-1" id="Ò"/>
+   <kerning advance="-1" id="Ó"/>
+   <kerning advance="-1" id="Ô"/>
+   <kerning advance="-1" id="Õ"/>
+   <kerning advance="-1" id="Ö"/>
+   <kerning advance="-1" id="Ø"/>
+   <kerning advance="-1" id="Œ"/>
+  </char>
+  <char offset="0 14" advance="10" rect="138 41 10 14" id="Z">
+   <kerning advance="-1" id="Ò"/>
+   <kerning advance="-1" id="Ó"/>
+   <kerning advance="-1" id="Ô"/>
+   <kerning advance="-1" id="Õ"/>
+   <kerning advance="-1" id="Ö"/>
+   <kerning advance="-1" id="Ø"/>
+   <kerning advance="-1" id="Œ"/>
+  </char>
+  <char offset="1 14" advance="7" rect="149 41 5 18" id="["/>
+  <char offset="-1 15" advance="8" rect="155 40 9 19" id="\"/>
+  <char offset="0 14" advance="6" rect="165 41 6 18" id="]"/>
+  <char offset="0 14" advance="9" rect="172 41 9 8" id="^"/>
+  <char offset="1 1" advance="9" rect="182 54 7 1" id="_"/>
+  <char offset="-1 14" advance="4" rect="190 41 4 3" id="`"/>
+  <char offset="1 9" advance="11" rect="195 46 9 9" id="a">
+   <kerning advance="-1" id="T"/>
+   <kerning advance="-1" id="W"/>
+  </char>
+  <char offset="1 14" advance="11" rect="1 60 9 14" id="b"/>
+  <char offset="1 9" advance="9" rect="11 65 8 9" id="c">
+   <kerning advance="-1" id="T"/>
+  </char>
+  <char offset="1 14" advance="11" rect="20 60 9 14" id="d"/>
+  <char offset="1 9" advance="11" rect="30 65 9 9" id="e">
+   <kerning advance="-1" id="T"/>
+   <kerning advance="-1" id="W"/>
+  </char>
+  <char offset="1 14" advance="8" rect="40 60 6 14" id="f"/>
+  <char offset="1 9" advance="11" rect="47 65 9 13" id="g">
+   <kerning advance="-1" id="T"/>
+  </char>
+  <char offset="1 14" advance="9" rect="57 60 7 14" id="h"/>
+  <char offset="1 12" advance="4" rect="65 62 2 12" id="i"/>
+  <char offset="-1 12" advance="5" rect="68 62 5 16" id="j"/>
+  <char offset="1 14" advance="7" rect="74 60 7 14" id="k"/>
+  <char offset="1 14" advance="4" rect="82 60 2 14" id="l"/>
+  <char offset="1 9" advance="14" rect="85 65 12 9" id="m"/>
+  <char offset="1 9" advance="9" rect="98 65 7 9" id="n"/>
+  <char offset="1 9" advance="11" rect="106 65 9 9" id="o">
+   <kerning advance="-1" id="T"/>
+   <kerning advance="-1" id="W"/>
+  </char>
+  <char offset="1 9" advance="11" rect="116 65 9 13" id="p"/>
+  <char offset="1 9" advance="11" rect="126 65 9 13" id="q">
+   <kerning advance="-1" id="T"/>
+  </char>
+  <char offset="1 9" advance="6" rect="136 65 5 9" id="r">
+   <kerning advance="-1" id="T"/>
+  </char>
+  <char offset="1 9" advance="7" rect="142 65 6 9" id="s">
+   <kerning advance="-1" id="T"/>
+  </char>
+  <char offset="1 12" advance="8" rect="149 62 6 12" id="t"/>
+  <char offset="1 9" advance="9" rect="156 65 7 9" id="u">
+   <kerning advance="-1" id="T"/>
+  </char>
+  <char offset="0 9" advance="8" rect="164 65 8 9" id="v"/>
+  <char offset="0 9" advance="14" rect="173 65 14 9" id="w">
+   <kerning advance="-1" id="T"/>
+  </char>
+  <char offset="0 9" advance="8" rect="188 65 8 9" id="x"/>
+  <char offset="0 9" advance="8" rect="197 65 8 13" id="y"/>
+  <char offset="1 9" advance="10" rect="1 88 8 9" id="z"/>
+  <char offset="1 14" advance="7" rect="10 83 6 18" id="{"/>
+  <char offset="1 14" advance="4" rect="17 83 2 18" id="|"/>
+  <char offset="1 14" advance="7" rect="20 83 6 18" id="}"/>
+  <char offset="2 5" advance="9" rect="27 92 6 2" id="~"/>
+  <char offset="1 14" advance="4" rect="34 83 2 14" id="¡"/>
+  <char offset="1 10" advance="9" rect="37 87 8 12" id="¢"/>
+  <char offset="0 14" advance="11" rect="46 83 10 14" id="£"/>
+  <char offset="1 14" advance="11" rect="57 83 11 14" id="¥"/>
+  <char offset="1 14" advance="4" rect="69 83 2 18" id="¦"/>
+  <char offset="1 12" advance="6" rect="72 85 5 1" id="¨"/>
+  <char offset="1 14" advance="10" rect="78 83 8 8" id="©"/>
+  <char offset="1 10" advance="13" rect="87 87 12 10" id="«"/>
+  <char offset="0 9" advance="13" rect="100 88 12 6" id="¬"/>
+  <char offset="1 14" advance="10" rect="113 83 8 8" id="®"/>
+  <char offset="1 15" advance="6" rect="122 82 4 4" id="°"/>
+  <char offset="1 11" advance="11" rect="127 86 9 11" id="±"/>
+  <char offset="-1 14" advance="4" rect="137 83 4 3" id="´"/>
+  <char offset="1 9" advance="9" rect="142 88 7 13" id="µ"/>
+  <char offset="0 14" advance="9" rect="150 83 8 14" id="¶"/>
+  <char offset="1 8" advance="3" rect="159 89 3 3" id="·"/>
+  <char offset="7 0" advance="19" rect="163 97 3 3" id="¸"/>
+  <char offset="0 10" advance="13" rect="167 87 12 10" id="»"/>
+  <char offset="1 14" advance="11" rect="180 83 9 14" id="¿"/>
+  <char offset="0 18" advance="12" rect="190 79 13 18" id="À">
+   <kerning advance="-1" id="V"/>
+   <kerning advance="-1" id="Y"/>
+  </char>
+  <char offset="0 18" advance="12" rect="1 102 12 18" id="Á">
+   <kerning advance="-1" id="V"/>
+  </char>
+  <char offset="0 18" advance="12" rect="14 102 13 18" id="Â">
+   <kerning advance="-1" id="V"/>
+   <kerning advance="-1" id="Y"/>
+  </char>
+  <char offset="0 17" advance="12" rect="28 103 13 17" id="Ã">
+   <kerning advance="-1" id="V"/>
+   <kerning advance="-1" id="Y"/>
+  </char>
+  <char offset="0 17" advance="12" rect="42 103 13 17" id="Ä">
+   <kerning advance="-1" id="V"/>
+   <kerning advance="-1" id="Y"/>
+  </char>
+  <char offset="0 18" advance="12" rect="56 102 13 18" id="Å">
+   <kerning advance="-1" id="V"/>
+   <kerning advance="-1" id="Y"/>
+  </char>
+  <char offset="0 14" advance="18" rect="70 106 18 14" id="Æ"/>
+  <char offset="1 14" advance="14" rect="89 106 12 17" id="Ç"/>
+  <char offset="2 18" advance="10" rect="102 102 8 18" id="È"/>
+  <char offset="2 18" advance="9" rect="111 102 8 18" id="É"/>
+  <char offset="2 18" advance="10" rect="120 102 8 18" id="Ê"/>
+  <char offset="2 17" advance="9" rect="129 103 8 17" id="Ë"/>
+  <char offset="0 18" advance="5" rect="138 102 4 18" id="Ì"/>
+  <char offset="1 18" advance="4" rect="143 102 4 18" id="Í"/>
+  <char offset="0 18" advance="4" rect="148 102 5 18" id="Î"/>
+  <char offset="0 17" advance="4" rect="154 103 5 17" id="Ï"/>
+  <char offset="1 14" advance="14" rect="160 106 12 14" id="Ð"/>
+  <char offset="2 17" advance="12" rect="173 103 9 17" id="Ñ"/>
+  <char offset="1 18" advance="15" rect="183 102 14 18" id="Ò">
+   <kerning advance="-1" id="Y"/>
+   <kerning advance="-1" id="Z"/>
+  </char>
+  <char offset="1 18" advance="15" rect="1 124 14 18" id="Ó">
+   <kerning advance="-1" id="Y"/>
+   <kerning advance="-1" id="Z"/>
+  </char>
+  <char offset="1 18" advance="15" rect="16 124 14 18" id="Ô">
+   <kerning advance="-1" id="Y"/>
+   <kerning advance="-1" id="Z"/>
+  </char>
+  <char offset="1 17" advance="15" rect="31 125 14 17" id="Õ">
+   <kerning advance="-1" id="Y"/>
+   <kerning advance="-1" id="Z"/>
+  </char>
+  <char offset="1 17" advance="15" rect="46 125 14 17" id="Ö">
+   <kerning advance="-1" id="Y"/>
+   <kerning advance="-1" id="Z"/>
+  </char>
+  <char offset="0 9" advance="9" rect="61 133 10 9" id="×"/>
+  <char offset="1 17" advance="16" rect="72 125 14 19" id="Ø">
+   <kerning advance="-1" id="Y"/>
+   <kerning advance="-1" id="Z"/>
+  </char>
+  <char offset="2 18" advance="14" rect="87 124 11 18" id="Ù"/>
+  <char offset="2 18" advance="14" rect="99 124 11 18" id="Ú"/>
+  <char offset="2 18" advance="14" rect="111 124 11 18" id="Û"/>
+  <char offset="2 17" advance="14" rect="123 125 11 17" id="Ü"/>
+  <char offset="0 18" advance="9" rect="135 124 10 18" id="Ý"/>
+  <char offset="1 14" advance="9" rect="146 128 8 14" id="Þ"/>
+  <char offset="1 14" advance="9" rect="155 128 8 14" id="ß"/>
+  <char offset="1 14" advance="11" rect="164 128 9 14" id="à"/>
+  <char offset="1 14" advance="11" rect="174 128 9 14" id="á"/>
+  <char offset="1 14" advance="11" rect="184 128 9 14" id="â"/>
+  <char offset="1 13" advance="11" rect="194 129 9 13" id="ã"/>
+  <char offset="1 13" advance="11" rect="1 146 9 13" id="ä"/>
+  <char offset="1 14" advance="11" rect="11 145 9 14" id="å"/>
+  <char offset="0 9" advance="17" rect="21 150 16 9" id="æ"/>
+  <char offset="1 9" advance="9" rect="38 150 8 12" id="ç"/>
+  <char offset="1 14" advance="11" rect="47 145 9 14" id="è"/>
+  <char offset="1 14" advance="11" rect="57 145 9 14" id="é"/>
+  <char offset="1 14" advance="11" rect="67 145 9 14" id="ê"/>
+  <char offset="1 13" advance="11" rect="77 146 9 13" id="ë"/>
+  <char offset="0 14" advance="5" rect="87 145 4 14" id="ì"/>
+  <char offset="1 14" advance="5" rect="92 145 4 14" id="í"/>
+  <char offset="0 14" advance="5" rect="97 145 5 14" id="î"/>
+  <char offset="0 13" advance="4" rect="103 146 5 13" id="ï"/>
+  <char offset="1 14" advance="12" rect="109 145 10 14" id="ð"/>
+  <char offset="2 13" advance="9" rect="120 146 7 13" id="ñ"/>
+  <char offset="1 14" advance="10" rect="128 145 9 14" id="ò"/>
+  <char offset="1 14" advance="10" rect="138 145 9 14" id="ó"/>
+  <char offset="1 14" advance="10" rect="148 145 9 14" id="ô"/>
+  <char offset="1 13" advance="10" rect="158 146 9 13" id="õ"/>
+  <char offset="1 13" advance="10" rect="168 146 9 13" id="ö"/>
+  <char offset="1 9" advance="13" rect="178 150 11 9" id="÷"/>
+  <char offset="1 11" advance="11" rect="190 148 9 13" id="ø"/>
+  <char offset="1 14" advance="9" rect="200 145 7 14" id="ù"/>
+  <char offset="1 14" advance="9" rect="1 167 7 14" id="ú"/>
+  <char offset="1 14" advance="9" rect="9 167 7 14" id="û"/>
+  <char offset="1 13" advance="9" rect="17 168 7 13" id="ü"/>
+  <char offset="0 14" advance="8" rect="25 167 8 18" id="ý"/>
+  <char offset="1 14" advance="11" rect="34 167 9 18" id="þ"/>
+  <char offset="0 12" advance="8" rect="44 169 8 16" id="ÿ"/>
+  <char offset="2 9" advance="5" rect="53 172 2 9" id="ı"/>
+  <char offset="-1 14" advance="7" rect="56 167 9 14" id="Ł"/>
+  <char offset="-1 14" advance="4" rect="66 167 6 14" id="ł"/>
+  <char offset="1 14" advance="15" rect="73 167 14 14" id="Œ"/>
+  <char offset="1 9" advance="18" rect="88 172 16 9" id="œ"/>
+  <char offset="1 18" advance="9" rect="105 163 8 18" id="Š"/>
+  <char offset="1 13" advance="7" rect="114 168 6 13" id="š"/>
+  <char offset="0 17" advance="10" rect="121 164 10 17" id="Ÿ"/>
+  <char offset="0 18" advance="10" rect="132 163 10 18" id="Ž"/>
+  <char offset="1 13" advance="10" rect="143 168 8 13" id="ž"/>
+  <char offset="1 11" advance="11" rect="152 170 9 13" id="ƒ"/>
+  <char offset="0 14" advance="5" rect="162 167 5 3" id="ˆ"/>
+  <char offset="0 14" advance="5" rect="168 167 5 3" id="ˇ"/>
+  <char offset="1 15" advance="6" rect="174 166 4 4" id="˚"/>
+  <char offset="1 14" advance="9" rect="179 167 6 2" id="˜"/>
+  <char offset="0 15" advance="7" rect="186 166 7 3" id="˝"/>
+  <char offset="1 5" advance="9" rect="194 176 7 1" id="–"/>
+  <char offset="1 5" advance="16" rect="1 196 14 1" id="—"/>
+  <char offset="1 14" advance="3" rect="16 187 2 4" id="‘"/>
+  <char offset="0 14" advance="3" rect="19 187 2 4" id="’"/>
+  <char offset="0 2" advance="3" rect="22 199 3 4" id="‚"/>
+  <char offset="1 14" advance="6" rect="26 187 5 4" id="“"/>
+  <char offset="0 14" advance="5" rect="32 187 5 4" id="”"/>
+  <char offset="0 2" advance="6" rect="38 199 5 4" id="„"/>
+  <char offset="0 14" advance="6" rect="44 187 6 16" id="†"/>
+  <char offset="0 14" advance="6" rect="51 187 6 16" id="‡"/>
+  <char offset="1 6" advance="5" rect="58 195 3 3" id="•"/>
+  <char offset="1 1" advance="10" rect="62 200 8 1" id="…"/>
+  <char offset="1 14" advance="15" rect="71 187 14 14" id="‰"/>
+  <char offset="1 10" advance="9" rect="86 191 8 10" id="‹"/>
+  <char offset="0 10" advance="9" rect="95 191 8 10" id="›"/>
+  <char offset="-1 15" advance="8" rect="104 186 9 19" id="⁄"/>
+  <char offset="1 14" advance="13" rect="114 187 12 14" id="€"/>
+ </chars>
+</font>
