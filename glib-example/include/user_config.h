@@ -46,7 +46,7 @@
 #include "user_wifi_credentials.h"
 #endif
 
-#define VERBOSE                 0           // verbose level UART;
+#define VERBOSE                 1           // verbose level UART;
                                             // 0 to turn off, 1 to display some perf benches, >2 to float UART!
 
 #endif

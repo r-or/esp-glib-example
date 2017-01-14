@@ -107,7 +107,7 @@ static uint8_t screen_count = 0;
 static const uint16_t anim_acceleration = 1000;     // how quickly animations pick up speed
 static const uint16_t anim_hold_frames = 100;       // time in frames for animation to actually start
 
-void ICACHE_FLASH_ATTR
+static void ICACHE_FLASH_ATTR
 a_few_screens() {
     glib_set_mode(GLIB_DM_FREE);
     switch (screen_count) {
@@ -140,7 +140,7 @@ a_few_screens() {
                              (glib_draw_args)(GLIB_DA_SWENDIAN | GLIB_DA_INVERT));
         glib_fb2gram();
         glib_clear_fb(GLIB_OS_ALL);
-        glib_clear_disp_fadeout_anim(0x00000000, 10 * anim_hold_frames, anim_acceleration, &a_few_screens);
+        glib_clear_disp_fadeout_anim(0x00000000, 4 * anim_hold_frames, anim_acceleration, &a_few_screens);
         glib_clear_tb_txt_state();
         break;
     }
@@ -158,8 +158,15 @@ start_user(os_event_t *e) {
     glib_set_font(FNT_HANKEN_LIGHT_13);
     glib_print((uint8_t *)"said ESP quietly.", 0, 0, GLIB_TP_APPEND, GLIB_DA_SWENDIAN, NULL, NULL);
     glib_fb2gram();
-    glib_clear_fb_toss_anim(GLIB_AD_S, anim_hold_frames, anim_acceleration, &a_few_screens);
-    glib_clear_tb_txt_state();
+
+    uint32_t bench = system_get_time();
+    glib_translate_subpix(glib_get_full_region(), 15.3f, 0.0f);
+    os_printf("subpix translation: %luus\n", system_get_time() - bench);
+    os_delay_us(1000000);
+    glib_fb2gram();
+
+    //glib_clear_fb_toss_anim(GLIB_AD_S, anim_hold_frames, anim_acceleration, &a_few_screens);
+    //glib_clear_tb_txt_state();
 }
 
 

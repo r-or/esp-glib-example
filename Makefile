@@ -238,12 +238,12 @@ $(BINODIR)/%.bin: $(IMAGEODIR)/%.out
 ifeq ($(APP), 0)
 	@$(RM) -r ../bin/eagle.S ../bin/eagle.dump
 	@$(OBJDUMP) -x -s $< > ../bin/eagle.dump
-	@$(OBJDUMP) -S $< > ../bin/eagle.S
+	@$(OBJDUMP) -S -r -w --no-show-raw-insn $< > ../bin/eagle.S
 else
 	mkdir -p ../bin/upgrade
 	@$(RM) -r ../bin/upgrade/$(BIN_NAME).S ../bin/upgrade/$(BIN_NAME).dump
 	@$(OBJDUMP) -x -s $< > ../bin/upgrade/$(BIN_NAME).dump
-	@$(OBJDUMP) -S $< > ../bin/upgrade/$(BIN_NAME).S
+	@$(OBJDUMP) -S $< > ../bin/upgrade/$(BIN_NAME).S    
 endif
 
 	@$(OBJCOPY) --only-section .text -O binary $< eagle.app.v6.text.bin
