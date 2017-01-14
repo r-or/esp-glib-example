@@ -5,6 +5,8 @@
 #include "driver/uart.h"
 #include "esp-glib.h"
 
+#include "snake.h"
+
 #define HEAPTIMER_MS                  10000
 
 uint32 ICACHE_FLASH_ATTR
@@ -112,26 +114,18 @@ a_few_screens() {
     glib_set_mode(GLIB_DM_FREE);
     switch (screen_count) {
     case 0:
-        glib_set_font(FNT_HANKEN_LIGHT_19);
-        glib_print((uint8_t *)"u+00a9 u+201cjust this guyu+201d\n"
-                              "{@xkcd.com}", 0, 0,
-                   (glib_txt_position)(GLIB_TP_CENTER_X | GLIB_TP_CENTER_Y | GLIB_TP_TOPMOST),
-                   (glib_draw_args)(GLIB_DA_SWENDIAN), NULL, NULL);
-        glib_fb2gram();
-        glib_clear_fb_toss_anim(GLIB_AD_W, anim_hold_frames, anim_acceleration, &a_few_screens);
-        glib_clear_tb_txt_state();
+        snake_start_game(&a_few_screens);
         break;
     case 1:
         glib_set_font(FNT_HANKEN_LIGHT_13);
-        glib_print((uint8_t *)"/* TODO: webclient\n"
-                              "to display different one \n"
-                              "each hour ... */", 0, 0,
-                   (glib_txt_position)(GLIB_TP_CENTER_X | GLIB_TP_CENTER_Y | GLIB_TP_TOPMOST),
-                   (glib_draw_args)(GLIB_DA_SWENDIAN), NULL, NULL);
-           glib_fb2gram();
-           glib_clear_fb_toss_anim(GLIB_AD_N, anim_hold_frames, anim_acceleration, &a_few_screens);
-           glib_clear_tb_txt_state();
+        glib_print((uint8_t *)"done!", 0, 0,
+                (glib_txt_position)(GLIB_TP_CENTER_X | GLIB_TP_CENTER_Y | GLIB_TP_TOPMOST),
+                (glib_draw_args)(GLIB_DA_SWENDIAN), NULL, NULL);
+        glib_fb2gram();
+        glib_clear_fb_toss_anim(GLIB_AD_N, anim_hold_frames, anim_acceleration, &a_few_screens);
+        glib_clear_tb_txt_state();
         break;
+           /*
     case 2:
         ;
         struct ass_info cass;
@@ -143,6 +137,7 @@ a_few_screens() {
         glib_clear_disp_fadeout_anim(0x00000000, 10 * anim_hold_frames, anim_acceleration, &a_few_screens);
         glib_clear_tb_txt_state();
         break;
+        */
     }
     system_soft_wdt_feed();
     ++screen_count;
@@ -152,11 +147,11 @@ static void ICACHE_FLASH_ATTR
 start_user(os_event_t *e) {
     glib_set_mode(GLIB_DM_TEXT_CLR);
     glib_set_font(FNT_HANKEN_LIGHT_19);
-    glib_print((uint8_t *)"u+201cHello Worldu+201d,\n", 0, 0,
+    glib_print((uint8_t *)"u+201cSNAKE!u+201d,\n", 0, 0,
                (glib_txt_position)(GLIB_TP_TOPMOST),
                (glib_draw_args)(GLIB_DA_SWENDIAN), NULL, NULL);
     glib_set_font(FNT_HANKEN_LIGHT_13);
-    glib_print((uint8_t *)"said ESP quietly.", 0, 0, GLIB_TP_APPEND, GLIB_DA_SWENDIAN, NULL, NULL);
+    glib_print((uint8_t *)"someone said.", 0, 0, GLIB_TP_APPEND, GLIB_DA_SWENDIAN, NULL, NULL);
     glib_fb2gram();
     glib_clear_fb_toss_anim(GLIB_AD_S, anim_hold_frames, anim_acceleration, &a_few_screens);
     glib_clear_tb_txt_state();
