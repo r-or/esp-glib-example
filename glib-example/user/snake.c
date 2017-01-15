@@ -1,47 +1,29 @@
+#include "snake.h"
 #include "osapi.h"
 #include "mem.h"
 #include "esp-glib.h"
 
+#define SNAKE_DEBUG                     1
+
 // 64x192 -> 32x96 (2x2) -> uint8: 4x12
-#define SNAKE_FATNESS           2
-#define SNAKE_FIELD_PIX_X       192
-#define SNAKE_FIELD_PIX_Y       64
-#define SNAKE_FIELD_X           (SNAKE_FIELD_PIX_X) / (SNAKE_FATNESS)
-#define SNAKE_FIELD_Y           (SNAKE_FIELD_PIX_Y) / (SNAKE_FATNESS)
-#define SNAKE_FIELD_SIZE_INT8   (SNAKE_FIELD_X) / 8
-#define SNAKE_START_SIZE        30
-#define SNAKE_START_SPEED_MS    30
-
-static uint8_t field[SNAKE_FIELD_SIZE_INT8] = {0};
-
-typedef enum {
-    STRAIGHT,
-    SN_NORTH,
-    SN_SOUTH,
-    SN_WEST,
-    SN_EAST
-} sn_direction;
+#define SNAKE_FATNESS                   2
+#define SNAKE_FIELD_PIX_X               192
+#define SNAKE_FIELD_PIX_Y               64
+#define SNAKE_FIELD_X                   (SNAKE_FIELD_PIX_X) / (SNAKE_FATNESS)
+#define SNAKE_FIELD_Y                   (SNAKE_FIELD_PIX_Y) / (SNAKE_FATNESS)
+#define SNAKE_FIELD_SIZE_INT8           (SNAKE_FIELD_X) / 8
+#define SNAKE_START_SIZE                35
+#define SNAKE_START_SPEED_MS            30
+#define SNAKE_INPUT_POLL_INTERVAL_MS    5
+#define SNAKE_INPUT_DEBOUNCE_CYCLES     5
 
 static sn_direction current_dir = SN_NORTH;
-
-struct sn_location {   // top left: x = 0, y = 0
-    int8_t x;
-    int8_t y;
-};
-
-struct sn_limb {
-    struct sn_location location;
-    uint8_t growing;
-    sn_direction dir;
-    struct sn_limb *next;
-};
-
 static struct sn_limb *snakehead = NULL;
 static struct sn_location current_food = {0, 0};
 static uint32_t current_score;
 static uint8_t current_speed;
 
-void
+void ICACHE_FLASH_ATTR
 add_limb(const struct sn_limb *const newlimb) {
     struct sn_limb *dst = (struct sn_limb *)os_malloc(sizeof(struct sn_limb));
     memcpy(dst, newlimb, sizeof(struct sn_limb));
@@ -57,7 +39,7 @@ add_limb(const struct sn_limb *const newlimb) {
     }
 }
 
-void
+void ICACHE_FLASH_ATTR
 inc_locations() {
     struct sn_limb *snake = snakehead;
     struct sn_limb lastlimb;
@@ -81,7 +63,7 @@ inc_locations() {
     //os_printf("\nsnake: locations incremented\n");
 }
 
-uint8_t
+uint8_t ICACHE_FLASH_ATTR
 loc_available(struct sn_location *const loc) {
     struct sn_limb *snake = snakehead;
     //os_printf("snake: head @ %08x\n", snakehead);
@@ -94,10 +76,10 @@ loc_available(struct sn_location *const loc) {
     return 1;
 }
 
-uint8_t
+uint8_t ICACHE_FLASH_ATTR
 advance_location(struct sn_location *const loc, const sn_direction dir) {
     struct sn_location loc_next = *loc;
-    os_printf("snake: current location: (%d, %d) => %d\n", loc_next.x, loc_next.y, dir);
+    //os_printf("snake: current location: (%d, %d) => %d\n", loc_next.x, loc_next.y, dir);
     switch (dir) {
     case SN_NORTH:
         --loc_next.y; break;
@@ -120,14 +102,14 @@ advance_location(struct sn_location *const loc, const sn_direction dir) {
         loc_next.y -= SNAKE_FIELD_Y;
 
     // test if field is available
-    os_printf("snake: advance location... -> (%d, %d)\n", loc_next.x, loc_next.y);
+    //os_printf("snake: advance location... -> (%d, %d)\n", loc_next.x, loc_next.y);
     if (!loc_available(&loc_next))
         return 0;
     *loc = loc_next;
     return 1;
 }
 
-void
+void ICACHE_FLASH_ATTR
 dispense_food() {
     struct sn_location food_location = {
         .x = os_random() % SNAKE_FIELD_X,
@@ -138,10 +120,10 @@ dispense_food() {
         food_location.y = os_random() % SNAKE_FIELD_Y;
     }
     current_food = food_location;
-    os_printf("snake: food dispensed!\n");
+    //os_printf("snake: food dispensed!\n");
 }
 
-void
+void ICACHE_FLASH_ATTR
 free_snake() {
     if (snakehead == NULL)
         return;
@@ -152,15 +134,15 @@ free_snake() {
         os_free(currlimb);
         currlimb = nextlimb;
     }
-    os_free(snakehead);
+    snakehead = NULL;
 }
 
-uint8_t
+uint8_t ICACHE_FLASH_ATTR
 advance() {
     inc_locations();
     snakehead->dir = current_dir;
     if (!advance_location(&snakehead->location, snakehead->dir)) {
-        os_printf("snake: cannot advance!\n");
+        //os_printf("snake: cannot advance!\n");
         return 0;   // failed
     }
 
@@ -172,33 +154,29 @@ advance() {
         snakehead->growing = 0;
     }
 
-    os_printf("snake: advanced!\n");
+    //os_printf("snake: advanced!\n");
     return 1;
 }
 
-void
+void ICACHE_FLASH_ATTR
 snake_reset_game(void) {
-    uint8_t i = 0;
-    for (; i < SNAKE_FIELD_SIZE_INT8; ++i)
-        field[i] = 0;
     free_snake();
     current_score = 0;
     current_speed = 1;
     current_dir = SN_WEST;
-
-    os_printf("snake: game reset!\n");
+    //os_printf("snake: game reset!\n");
 }
 
 static void (*end_game_cb)(void);
 
-void
+void ICACHE_FLASH_ATTR
 end_game(void) {
     snake_reset_game();
     end_game_cb();
-    os_printf("snake: game ended!\n");
+    //os_printf("snake: game ended!\n");
 }
 
-void
+void ICACHE_FLASH_ATTR
 update_field(void) {
     struct sn_limb *snake = snakehead;
     struct glib_window curr_rect;
@@ -210,7 +188,7 @@ update_field(void) {
         curr_rect.x_right = snake->location.x * SNAKE_FATNESS + SNAKE_FATNESS - 1;
         curr_rect.y_top = snake->location.y * SNAKE_FATNESS;
         curr_rect.y_bottom = snake->location.y * SNAKE_FATNESS + SNAKE_FATNESS - 1;
-        glib_draw_rect(&curr_rect, 0xFFFFFFFF);
+        glib_draw_rect(&curr_rect, 0xFFFFFFFF, 1);
         snake = snake->next;
     } while (snake != NULL);
 
@@ -219,9 +197,9 @@ update_field(void) {
     curr_rect.x_right = current_food.x * SNAKE_FATNESS + SNAKE_FATNESS - 1;
     curr_rect.y_top = current_food.y * SNAKE_FATNESS;
     curr_rect.y_bottom = current_food.y * SNAKE_FATNESS + SNAKE_FATNESS - 1;
-    glib_draw_rect(&curr_rect, 0xFFFFFFFF);
+    glib_draw_rect(&curr_rect, 0xFFFFFFFF, 1);
 
-    os_printf("snake: field updated!");
+    //os_printf("snake: field updated!");
 }
 
 static const struct glib_window score_textpos = {
@@ -231,20 +209,85 @@ static const struct glib_window score_textpos = {
     .y_bottom = GLIB_DISP_ROW_UPPER
 };
 
-void
+void ICACHE_FLASH_ATTR
 update_score(void) {
     glib_set_textbox(&score_textpos);
-    glib_set_mode(GLIB_DM_TEXT_CLR);
+    glib_clear_tb_txt_state();
     glib_set_font(FNT_HANKEN_LIGHT_13);
+    glib_set_mode(GLIB_DM_TEXT_CLR);
     glib_print((uint8_t *)"Score:\n", 0, 0,
                (glib_txt_position)(GLIB_TP_TOPMOST),
                GLIB_DA_SWENDIAN, NULL, NULL);
     char buf[15];
     os_sprintf(buf, "%lu", current_score);
     glib_print((uint8_t *)buf, 0, 0, GLIB_TP_APPEND, GLIB_DA_SWENDIAN, NULL, NULL);
-    glib_clear_tb_txt_state();
 
-    os_printf("snake: Score updated!\n");
+    //os_printf("snake: Score updated!\n");
+}
+
+void ICACHE_FLASH_ATTR
+snake_turn_left(void) {
+    if (snakehead == NULL)
+        return;
+
+    switch (snakehead->dir) {
+    case SN_NORTH:
+        current_dir = SN_WEST; break;
+    case SN_WEST:
+        current_dir = SN_SOUTH; break;
+    case SN_EAST:
+        current_dir = SN_NORTH; break;
+    case SN_SOUTH:
+        current_dir = SN_EAST; break;
+    }
+}
+
+void ICACHE_FLASH_ATTR
+snake_turn_right(void) {
+    if (snakehead == NULL)
+        return;
+
+    switch (snakehead->dir) {
+    case SN_NORTH:
+        current_dir = SN_EAST; break;
+    case SN_WEST:
+        current_dir = SN_NORTH; break;
+    case SN_EAST:
+        current_dir = SN_SOUTH; break;
+    case SN_SOUTH:
+        current_dir = SN_WEST; break;
+    }
+}
+
+
+static os_timer_t volatile input_timer;
+static int8_t gpio4, gpio5;
+
+static void ICACHE_FLASH_ATTR
+poll_input(void *arg) {
+    if (!GPIO_INPUT_GET(4)) {
+        ++gpio4;
+        if (gpio4 == SNAKE_INPUT_DEBOUNCE_CYCLES)
+            snake_turn_left();
+    } else {
+        --gpio4;
+    }
+    if (gpio4 > SNAKE_INPUT_DEBOUNCE_CYCLES * 2)
+        gpio4 = SNAKE_INPUT_DEBOUNCE_CYCLES * 2;
+    else if (gpio4 < 0)
+        gpio4 = 0;
+
+    if (!GPIO_INPUT_GET(5)) {
+        ++gpio5;
+        if (gpio5 == SNAKE_INPUT_DEBOUNCE_CYCLES)
+            snake_turn_right();
+    } else {
+        --gpio5;
+    }
+    if (gpio5 > SNAKE_INPUT_DEBOUNCE_CYCLES * 2)
+        gpio5 = SNAKE_INPUT_DEBOUNCE_CYCLES * 2;
+    else if (gpio5 < 0)
+        gpio5 = 0;
 }
 
 
@@ -255,16 +298,17 @@ sn_loop(void *arg) {
     uint32_t benchtime = system_get_time();
     if (!advance()) {
         os_timer_disarm(&game_loop_timer);
+        os_timer_disarm(&input_timer);
         end_game();
+        return;
     }
     update_field();
     update_score();
     glib_fb2gram();
-
-    os_printf("snake: game loop (%luus)\n", system_get_time() - benchtime);
+    //os_printf("snake: game loop (%luus)\n", system_get_time() - benchtime);
 }
 
-void
+void ICACHE_FLASH_ATTR
 snake_start_game(void (*end_game_callback)(void)) {
     end_game_cb = end_game_callback;
     snake_reset_game();
@@ -297,8 +341,24 @@ snake_start_game(void (*end_game_callback)(void)) {
 
     //Setup timer
     os_timer_disarm(&game_loop_timer);
-    os_timer_setfn(&game_loop_timer, (os_timer_func_t *)sn_loop, NULL);
+    os_timer_setfn(&game_loop_timer, (os_timer_func_t *)&sn_loop, NULL);
     os_timer_arm(&game_loop_timer, SNAKE_START_SPEED_MS, 1);
 
-    os_printf("snake: game started!\n");
+    os_timer_disarm(&input_timer);
+    os_timer_setfn(&input_timer, (os_timer_func_t *)&poll_input, NULL);
+    os_timer_arm(&input_timer, SNAKE_INPUT_POLL_INTERVAL_MS, 1);
+
+    //os_printf("snake: game started!\n");
+}
+
+void ICACHE_FLASH_ATTR
+snake_init(void) {
+    PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO4_U, FUNC_GPIO4);
+    PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO5_U, FUNC_GPIO5);
+
+    PIN_PULLUP_EN(PERIPHS_IO_MUX_GPIO4_U);
+    PIN_PULLUP_EN(PERIPHS_IO_MUX_GPIO5_U);
+
+    gpio_output_set(0, 0, 0, GPIO_ID_PIN(4));
+    gpio_output_set(0, 0, 0, GPIO_ID_PIN(5));
 }

@@ -4,6 +4,7 @@
 #include "osapi.h"
 #include "driver/uart.h"
 #include "esp-glib.h"
+#include "gpio.h"
 
 #include "snake.h"
 
@@ -117,6 +118,7 @@ a_few_screens() {
         snake_start_game(&a_few_screens);
         break;
     case 1:
+        glib_set_textbox(NULL);
         glib_set_font(FNT_HANKEN_LIGHT_13);
         glib_print((uint8_t *)"done!", 0, 0,
                 (glib_txt_position)(GLIB_TP_CENTER_X | GLIB_TP_CENTER_Y | GLIB_TP_TOPMOST),
@@ -176,6 +178,64 @@ start_user_func(void *arg) {
     system_os_post(user_procTaskPrio, 0, 0);
 }
 
+/*
+#define DEBOUNCE_TIME_MS 100
+static uint32_t last_interrupt_gpio4 = 0, last_interrupt_gpio5 = 0;
+
+
+static void
+gpio_intr_handler(int *dummy) {
+    uint32_t gpio_status = GPIO_REG_READ(GPIO_STATUS_ADDRESS);
+    uint32_t interrupt_time = system_get_time();
+    if (gpio_status & BIT(4)) {
+        gpio_pin_intr_state_set(GPIO_ID_PIN(4), GPIO_PIN_INTR_DISABLE);
+        GPIO_REG_WRITE(GPIO_STATUS_W1TC_ADDRESS, gpio_status & BIT(4));
+        gpio_pin_intr_state_set(GPIO_ID_PIN(4), GPIO_PIN_INTR_ANYEDGE);
+        os_printf("ISR: gpio4");
+        if (interrupt_time - last_interrupt_gpio4 > DEBOUNCE_TIME_MS * 1000) {
+            snake_turn_left();
+            os_printf(" *");
+        }
+        os_printf("\n");
+
+        last_interrupt_gpio4 = interrupt_time;
+    }
+    if (gpio_status & BIT(5)) {
+        gpio_pin_intr_state_set(GPIO_ID_PIN(5), GPIO_PIN_INTR_DISABLE);
+        GPIO_REG_WRITE(GPIO_STATUS_W1TC_ADDRESS, gpio_status & BIT(5));
+        gpio_pin_intr_state_set(GPIO_ID_PIN(5), GPIO_PIN_INTR_ANYEDGE);
+        os_printf("ISR: gpio5");
+        if (interrupt_time - last_interrupt_gpio5 > DEBOUNCE_TIME_MS * 1000) {
+            snake_turn_right();
+            os_printf(" *");
+        }
+        os_printf("\n");
+
+        last_interrupt_gpio5 = interrupt_time;
+    }
+}
+
+static void ICACHE_FLASH_ATTR
+setup_isr() {
+    PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO4_U, FUNC_GPIO4);
+    PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO5_U, FUNC_GPIO5);
+
+    PIN_PULLUP_EN(PERIPHS_IO_MUX_GPIO4_U);
+    PIN_PULLUP_EN(PERIPHS_IO_MUX_GPIO5_U);
+
+    gpio_output_set(0, 0, 0, GPIO_ID_PIN(4));
+    gpio_output_set(0, 0, 0, GPIO_ID_PIN(5));
+
+    ETS_GPIO_INTR_DISABLE();
+    ETS_GPIO_INTR_ATTACH(&gpio_intr_handler, NULL);
+    GPIO_REG_WRITE(GPIO_STATUS_W1TC_ADDRESS, BIT(4));
+    GPIO_REG_WRITE(GPIO_STATUS_W1TC_ADDRESS, BIT(5));
+    gpio_pin_intr_state_set(GPIO_ID_PIN(4), GPIO_PIN_INTR_ANYEDGE);
+    gpio_pin_intr_state_set(GPIO_ID_PIN(5), GPIO_PIN_INTR_ANYEDGE);
+
+    ETS_GPIO_INTR_ENABLE();
+}
+*/
 
 void ICACHE_FLASH_ATTR
 user_init(void) {
@@ -196,6 +256,11 @@ user_init(void) {
     wifi_set_opmode(STATION_MODE);
     user_set_station_config();
 #endif
+
+    gpio_init();
+    //setup_isr();
+    ETS_GPIO_INTR_DISABLE();
+    snake_init();
 
     glib_init();
     glib_set_brightness(GLIB_MAX_BRIGHTNESS);
