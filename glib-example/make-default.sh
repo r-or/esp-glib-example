@@ -2,6 +2,8 @@
 
 export BIN_PATH=../bin
 
+ESP_OPEN_SDK_PATH=$HOME/esp-open-sdk
+
 STERM="minicom"
 
 FFREQ="40m"
@@ -9,7 +11,7 @@ FMODE="qio"
 FSIZE="32m"
 PORT="/dev/ttyUSB0"
 BAUD="1500000"
-MAKEARGS="all COMPILE=gcc"
+MAKEARGS="all COMPILE=gcc ESP_OPEN_SDK=$ESP_OPEN_SDK_PATH"
 
 if [ ! -d "$BIN_PATH" ]; then
   mkdir $BIN_PATH
@@ -26,7 +28,7 @@ else
                 echo "killing $STERM..."
                 sleep 3
             fi
-            esptool.py -p $PORT -b $BAUD write_flash -ff $FFREQ -fm $FMODE -fs $FSIZE \
+            $ESP_OPEN_SDK_PATH/esptool/esptool.py -p $PORT -b $BAUD write_flash -ff $FFREQ -fm $FMODE -fs $FSIZE \
                 0x00000     $BIN_PATH/eagle.flash.bin \
                 0x10000     $BIN_PATH/eagle.irom0text.bin \
                 0xfe000     $BIN_PATH/blank.bin \
