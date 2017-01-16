@@ -15,6 +15,8 @@ TARGET = eagle
 FLAVOR = release
 #FLAVOR = debug
 
+ESP_OPEN_SDK=$(HOME)/esp-open-sdk
+
 #EXTRA_CCFLAGS += -u
 
 ifndef PDIR # {
@@ -55,6 +57,7 @@ COMPONENTS_eagle.app.v6 =   \
 
 LINKFLAGS_eagle.app.v6 =    \
     -L../lib                \
+    -L$(ESP_OPEN_SDK)/lx106-hal/src \
     -nostdlib               \
     -T$(LD_FILE)            \
     -Wl,--no-check-sections	\
