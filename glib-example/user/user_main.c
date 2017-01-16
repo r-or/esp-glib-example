@@ -127,19 +127,6 @@ a_few_screens() {
         glib_clear_fb_toss_anim(GLIB_AD_N, anim_hold_frames, anim_acceleration, &a_few_screens);
         glib_clear_tb_txt_state();
         break;
-           /*
-    case 2:
-        ;
-        struct ass_info cass;
-        if (!ass_get(&cass, ASS_INT_PI))
-            glib_draw_bitmap(0, 11, cass.address, cass.height, cass.width,
-                             (glib_draw_args)(GLIB_DA_SWENDIAN | GLIB_DA_INVERT));
-        glib_fb2gram();
-        glib_clear_fb(GLIB_OS_ALL);
-        glib_clear_disp_fadeout_anim(0x00000000, 10 * anim_hold_frames, anim_acceleration, &a_few_screens);
-        glib_clear_tb_txt_state();
-        break;
-        */
     }
     system_soft_wdt_feed();
     ++screen_count;
