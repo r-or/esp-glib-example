@@ -15,8 +15,6 @@ TARGET = eagle
 FLAVOR = release
 #FLAVOR = debug
 
-ESP_OPEN_SDK=$(HOME)/esp-open-sdk
-
 #EXTRA_CCFLAGS += -u
 
 ifndef PDIR # {
