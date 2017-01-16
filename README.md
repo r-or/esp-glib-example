@@ -37,13 +37,15 @@ Make sure all the flash addresses are valid and all the binary files have been p
 
 To build you still have to set up your xtensa toolchain [as usual](https://github.com/esp8266/esp8266-wiki/wiki/Toolchain).
 
+To be more specific, build [esp-open-sdk](https://github.com/pfalcon/esp-open-sdk) with ```STANDALONE=n```. It is assumed that you place the SDK in $HOME/esp-open-sdk. This path however can be specified in glib-example/Makefile ("ESP_OPEN_SDK" variable).
+
 Afterwards, call ```./make-default.sh``` to build and/or ```./make-default flash``` to make and flash.
 
 To clean solution: ```./make-default.sh clean```
 
 Config
 ======
-Configuration happens in glib-example/include/user_config.h as usual.
+Configuration happens in glib-example/include/user_config.h.
 
 Here you can select the starting addresses of assets/bitmaps (BMP_ADDRESS) as well as fonts (FONT_ADDRESS). Choose according to your ESP model and your make/ flash script above.
 
