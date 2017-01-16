@@ -8,6 +8,8 @@ Inside glib-example is a working sample of esp-glib with a SSD1322 display contr
 
 Check out glib-example/user/user_main.c for usage.
 
+Video of demo: https://youtu.be/7Q2MXw7QHp0
+
 [esp-glib](https://github.com/r-or/esp-glib) is added as a submodule in glib-example/glib.
 
 Cloning & Updating
